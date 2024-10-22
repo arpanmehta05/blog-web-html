@@ -215,8 +215,10 @@ body {
     display: flex;
     flex-direction: column;
     max-width: 30rem;
-
+    gap: 1rem;
 }
+
+
 
 .divi {
     display: flex; flex-wrap: wrap;
@@ -271,6 +273,11 @@ body {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.form .title {
+    padding: 0.5rem 1rem;
+    margin: 1rem;
 }
 
 .post-title
