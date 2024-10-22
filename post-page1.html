@@ -18,7 +18,7 @@
     <!-- ------hearder--------- -->
 <header>
     <div class="nav container">
-    <a href="blog.html" class="logo"><span class="logo-span"><img src="img/logo.png" class="logo"></span></a>
+    <a href="index.html" class="logo"><span class="logo-span"><img src="img/logo.png" class="logo"></span></a>
     <a href="#" class="login">Login</a>
     </div>
 </header>
@@ -97,25 +97,27 @@
 
 <script>
     
-    const saveddata = JSON.parse(localStorage.getItem("data")) || "";
+    const saveddata = JSON.parse(localStorage.getItem("data")) || {title: "", text: ""};
     console.log(saveddata);
 
     console.log(saveddata.length)
 
-    let myhtml = saveddata.map(comment => {
-        return `
+    let myhtml = ``
+
+    for(let i = 0; i < saveddata.length; i++) {
+        myhtml += `
             <div class="comment">
-                <h2 class="sub-heading">${comment.title}</h2>
-                <p class="post-text">${comment.text}</p>    
+                <h2 class="sub-heading">${saveddata[i].title}</h2>
+                <p class="post-text">${saveddata[i].text}</p>    
                 <div id="commentheart">
                     <i class="fa-regular fa-heart" style="color: #eb0000;"></i>
                 </div>
-            </div>
-        `;
-    });
+            </div>`
+        };
+
     console.log(myhtml)
 
-    document.getElementById('divi').innerHTML = myhtml.join('');
+    document.getElementById('divi').innerHTML = myhtml;
 
     const form = document.querySelector('.form');
 
