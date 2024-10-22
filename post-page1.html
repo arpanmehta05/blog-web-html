@@ -49,13 +49,20 @@
     <p class="post-text">Prime members can also order groceries online and pick them up from Groco and Whole Foods Market where available across the U.S. Pickup is free on all orders from Groco and free from Whole Foods Market on orders of $35 or more. Simply place your grocery order online or in the Amazon App, select your store and a pickup window that works with your schedule, then relax and let our shoppers pick your items. You’ll receive a notification when your order is ready for pickup, then you’ll follow the signs to a designated parking spot and we’ll bring out your order. Be sure to double-check your email instructions, as some stores may require you to go inside to pick up your order.</p>
 </section>
 
-<div id="divi"></div>
+<!-- --------------comment------------- -->
+
+<div class="comment-container">
+    <div class="comtitle">
+        Comments
+    </div>
+    <div id="divi" class="divi"></div>
 
 <form class="form">
     <input type="title" placeholder="title">
     <input type="text" placeholder="text"/>
     <input type="submit" value="submit"/>
 </form>
+</div>
 
 
 <!-- --------------shar------------- -->
@@ -97,8 +104,13 @@
 
     let myhtml = saveddata.map(comment => {
         return `
-            <h2 class="sub-heading">${comment.title}</h2>
-            <p class="post-text">${comment.text}</p>
+            <div class="comment">
+                <h2 class="sub-heading">${comment.title}</h2>
+                <p class="post-text">${comment.text}</p>    
+                <div id="commentheart">
+                    <i class="fa-regular fa-heart" style="color: #eb0000;"></i>
+                </div>
+            </div>
         `;
     });
     console.log(myhtml)
@@ -120,13 +132,21 @@
         localStorage.setItem("data", JSON.stringify(data));
         console.log(data)
         newPost.innerHTML += `
+        <div class="comment">
             <h2 class="sub-heading">${title}</h2>
             <p class="post-text">${text}</p>
+        </div>
         `;
         postContent.appendChild(newPost);
     });
 
     localStorage.setItem("data", JSON.stringify(data));
+
+
+    const commentheart = document.getElementById('commentheart');
+    commentheart.addEventListener("click", () => {
+        commentheart.innerHTML = `<i class="fa-solid fa-heart" style="color: #eb0000;"></i>`;
+    });
 </script>
 </body>
 </html>
